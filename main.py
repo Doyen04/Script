@@ -96,13 +96,13 @@ with open('backup.txt', 'a') as file:
                 ,'{sheet['database_name']}'
                 ,'{start_date_with_offset.strftime('%Y-%m-%d %H:%M:%S')}'
                 ,'{finish_date_with_offset.strftime('%Y-%m-%d %H:%M:%S')}'
-                ,'{sheet['expiration_date']}'
+                ,'{'' if pd.isna(sheet['expiration_date']) else sheet['expiration_date']}'
                 ,'Database'
                 ,'{sheet['backup_size']}'
-                ,'{sheet['logical_device_name']}'
+                ,'{'' if pd.isna(sheet['logical_device_name']) else sheet['logical_device_name']}'
                 ,'{sheet['physical_device_name']}'
                 ,'{sheet['backupset_name']}'
-                ,'{sheet['description']}');
+                ,'{'' if pd.isna(sheet['description']) else sheet['description']}');
                 GO
         """)
     
